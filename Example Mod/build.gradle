@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Compile against the base game's jar (build it first with the main
+    // project's `gradlew build`, or copy an existing PlatformerGame-1.0.jar
+    // here). Not bundled into the mod jar - the game already has these
+    // classes on its own classpath at runtime.
+    compileOnly files('../../build/libs/PlatformerGame-1.0.jar')
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+        resources {
+            srcDirs = ['resources']
+        }
+    }
+}
+
+jar {
+    archiveFileName = 'examplemod.jar'
+}
